@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Beach Waves Video overlap</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 1;
+      }
+      #instrutions {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-left: 20px;
+        margin-top: 20px;
+        width: 25%;
+        z-index: 2;
+      }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXRjb2RlZG9nMDUiLCJhIjoiY2pxcnU5cjVjMG9tNjQzbXZhd2loaHhnbSJ9.-e3Bp-lsfnDcp3AiZMKAGQ';
+var videoStyle = {
+    "version": 8,
+    "sources": {
+        "satellite": {
+            "type": "raster",
+            "url": "mapbox://mapbox.satellite",
+            "tileSize": 256
+        },
+        "video": {
+            "type": "video",
+            "urls": ["https://static-assets.mapbox.com/mapbox-gl-js/drone.mp4", "https://static-assets.mapbox.com/mapbox-gl-js/drone.webm"],
+            "coordinates": [
+                [-122.51596391201019, 37.56238816766053],
+                [-122.51467645168304, 37.56410183312965],
+                [-122.51309394836426, 37.563391708549425],
+                [-122.51423120498657, 37.56161849366671]
+            ]
+        }
+    },
+    "layers": [{
+        "id": "background",
+        "type": "background",
+        "paint": {
+            "background-color": "rgb(4,7,14)"
+        }
+    }, {
+        "id": "satellite",
+        "type": "raster",
+        "source": "satellite"
+    }, {
+        "id": "video",
+        "type": "raster",
+        "source": "video"
+    }]
+};
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    zoom: 17,
+    center: [-122.514426, 37.563584],
+    bearing: 500,
+    pitch:750,
+    style: videoStyle
+});
+</script>
+
+<div id="instrutions">
+  <div class="w3-card-4 w3-white">
+  <header class="w3-container w3-blue">
+  <h3>Beach Waves Video overlap</h3>
+</header>
+
+<div class="w3-container">
+  <p>
+  <div class="w3-text-grey">
+  Performing precise overlap of video on a map to render a realtime effect. 
+  <br><br>
+  The video recorded by a Drone. 
+  <br><br>
+  Video source: <a href="https://static-assets.mapbox.com/mapbox-gl-js/drone.mp4">https://static-assets.mapbox.com/mapbox-gl-js/drone.mp4</a>
+  <br>
+  </div>
+  </p>
+</div>
+
+<footer class="w3-container w3-blue">
+  <h5>
+    Designed Using MapboxGL JS
+    <br><br>
+    Find more projects by me on: <br>
+    <a href="https://atcodedog05.github.io/"
+    target="_blank">https://atcodedog05.github.io</a><br>
+    <a href="https://github.com/atcodedog05"
+    target="_blank">https://github.com/atcodedog05</a>
+  </h5>
+</footer>
+</div>
+</div>
+
+</body>
+</html>
